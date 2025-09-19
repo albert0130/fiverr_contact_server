@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes import users, lancers
+import os
 
 app = FastAPI()
 
@@ -16,3 +17,9 @@ app.add_middleware(
 print("aaaaaa")
 app.include_router(users.router, tags=["Users"])
 app.include_router(lancers.router, tags=["Lancers"])
+
+# For Render deployment
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)

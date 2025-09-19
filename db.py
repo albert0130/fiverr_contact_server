@@ -1,8 +1,12 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from bson import ObjectId
 import os
+from dotenv import load_dotenv
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://albert0130_db_user:3aDR05vMpFLlq7JF@cluster0.uufmja0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+# Load environment variables from .env file
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
 DB_NAME = os.getenv("DB_NAME", "fastapi_db")
 
 client = AsyncIOMotorClient(MONGO_URI)
