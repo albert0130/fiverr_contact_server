@@ -1,4 +1,5 @@
 from main import app
+from mangum import Mangum
 
 # This is the entry point for Vercel
-handler = app
+handler = Mangum(app)
